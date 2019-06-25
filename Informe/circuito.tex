@@ -1,0 +1,27 @@
+\begin{minipage}{.4\textwidth}
+\makeatletter
+\def\@captype{figure}
+\makeatother
+\centering
+\begin{circuitikz}[american]
+\draw
+(2.5,0.5) node[npn](npn){};
+\draw
+(npn.base)node[anchor = east, yshift = 0.25 cm,xshift = .45 cm]{B} to (1.5,0.5) to [R, l=$R_B$](1.5,2.75) to (2,2.75);
+\draw
+(1.5,0.5) to [C, -o, l=$C_{in}$](0.5,0.5) to [R,l_=$R_s$](-1,.5) to [sV, l_=$v_s$](-1,-1) to (0.5,-1)node[ocirc](vi){} to (2.5,-1);
+\draw
+(npn.emitter)node[anchor = south, xshift = 0.25 cm]{E} to (2.5,-1)node[ground]{};
+\draw
+(npn.collector)node[anchor = north, xshift = 0.25 cm, yshift = .25 cm]{C} to [R, l_=$R_C$](2.5,2.75) to (2,2.75) to (2,3)node[short, -o, yshift = .25 cm]{$V_{CC}$};
+\draw
+(2.5, 1) to (3.5,1)node[ocirc](vo2){} to (4,1) to [R, l=$R_L$](4,-1) to(3.5,-1)node[ocirc](vo1){} to (2.5,-1);
+\draw
+[dashed] (3.6,-1.5) to (3.6,1.5) to (5,1.5) to (5,-1.5) to (3.6,-1.5);
+\draw[dashed]
+(0.4,1.5) to (0.4,-1.5) to (-2,-1.5) to (-2,1.5) to (0.4,1.5);
+\end{circuitikz}
+\captionsetup{justification=centering}
+\caption{Esquema del amplificador a diseñar}
+\label{fig-disenio-ampli}
+\end{minipage}
