@@ -1,0 +1,60 @@
+%COMANDOS DE INFORMACION DE MATERIA
+\newcommand{\codigoMateria}{86.05} %una "macro" para definir codigo de materia
+\newcommand{\nombreMateria}{Analisis de Circuitos}
+\newcommand{\descripcionTP}{Diseño y analisis de un filtro Notch}
+\newcommand{\resumen}{
+% TODO: hacer resumen de TP
+hola
+}
+\newcommand{\tituloTP}{Trabajo práctico }
+\newcommand{\facultad}{Facultad de Ingeniería}
+\newcommand{\universidad}{Universidad de Buenos Aires}
+
+%COMANDOS DE DATOS PERSONALES
+
+\newcommand{\miNombre}{Vazquez, Rodrigo}
+\newcommand{\miPadron}{98934}
+\newcommand{\miMail}{rodrigomarianovazquez@gmail.com}
+\newcommand{\fechaEntrega}{24 de Julio}
+
+%MARGENES
+\marginsize{2cm}{2cm}{1cm}{1.5cm} %izquierda, derecha, arriba, abajo
+
+%HEADERS Y FOOTERS DEL INFORME
+\pagestyle{fancy} % seleccionamos un estilo
+\fancyhead{}
+\fancyfoot{}
+\lhead{\includegraphics[width=2.5cm]{imagenes/logofiuba.PNG}} % texto izquierda 
+\rhead{\nombreMateria \, (\codigoMateria)} % texto centro de la cabecera
+\cfoot{\thepage}
+
+%OTRAS OPCIONES DE FORMATO
+\newcommand{\HRule}{\rule{\linewidth}{1mm}} %linea negra de separacion
+\date{} %saca la fecha
+\raggedbottom %evita espacios en blancos grandes entre imagenes y textos
+
+%PORTADA
+\vspace*{-12mm}%esto, no entiendo como funciona pero hace lo que quiero (dejar un pequeño espacio)
+\begin{center}
+\fechaEntrega
+
+\LARGE{\textsc{ \tituloTP }}\\[.3cm]
+%\HRule \\[0.1cm]
+\LARGE{\textbf{\descripcionTP}}\\[0.01cm]
+\HRule\\[0.3cm]
+\normalsize
+\begin{tabbing}
+	\begin{tabular}{ c c c }
+		\miPadron & \miNombre & \miMail \\
+	\end{tabular}
+	\end{tabbing}
+\end{center}
+\HRule
+\begin{abstract}
+\justify
+\resumen
+\medskip
+\end{abstract}
+\justify
+\HRule
+\medskip
