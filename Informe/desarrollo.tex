@@ -23,7 +23,83 @@ De la consigna se obtiene que la frecuencia de corte es
 $\omega_0=\sqrt{1.004\times10^7}=3169$, por lo que $f_0=\frac{\omega_0}{2\pi}=504\Hz$. Con este dato, encontramos que $Q=\frac{\omega_0}{3510}=0.902$.\\
 Ademas, la transferencia tiene un cero doble en $C_0=0$ y polos complejos conjugados en $p_{0,1}= -1755\pm j\ 2638 $. La forma compeja de los polos es coherente al tener $Q>0.5$.
 Por ultimo, $H_0 =1$  ya que no hay amplificacion superada la frecuencia de corte.\\
+\pagebreak
+%---------------------------------------------------------------%
 
+\subsection*{Diagramas de Bode}
+Para la transferencia hallada, se realizaron los diagramas de Bode en el software \texttt{Matlab} de calculo num\'erico. Definiendo a $s$  como una variable de transferencia y con la funcio\'on \textit{bode()} se obtuvo la siguiente figura\\
+%\pagebreak
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=18cm]{imagenes/BODE.jpg}	\caption{Diagrama de Bode teorico en Matlab}
+\end{figure}
+
+Se puede apreciar el comportamiento de \textit{Pasa Altos} y tambien que est\'a aplicado a la frecuencia correcta ($\sim 500\Hz$). Luego viendo el nivel de amplificacion para las altas frecuencias, se observa un nivel de $0 \dB$, lo cu\'al coincide con el esperado.
+
+%---------------------------------------------------------------%
+\subsection*{Respuesta del filtro teorico a distintas señales}
+
+Luego del diagrama de Bode, se realizaron graficos donde se muestran qu\'e salida tiene el filtro dada una señal de entrada como: \textit{escal\'on}, \textit{impulso} y \textit{cuadrada}.\\
+
+Para la respuesta a la señal cuadrada, se eligieron tambien,  3 frecuencias acordes, $f_1 = \frac{f_0}{10}=50,4 \Hz$, $f_2 = f_0 = 504\Hz$, $f_3 = 10.f_0= 5,04 \kHz$.
+Se lograron los siguientes resultados.\\
+
+%TODO: LLEGUE HASTA ACA, FALTA PONER GRAFICOS NUEVOS MAS LEGIBLES Y CONTINUAR DESCRIPCIONES%
+
+\begin{figure}[hbt]
+	\centering
+	\includegraphics[width=9cm]{imagenes/STEP.jpg}
+	\caption{Respuesta al escal\'on.}
+\end{figure}
+Se puede observar que se logra un nivel de tensi\'on estable cerca de los $6 \ms$, adem\'as, se ve que el valor al que estabiliza es $3 \V$, que es acorde a la  amplificacion de $3\ veces$ o $9.54 \dB$.\\
+
+\begin{figure}[hbt]
+	\centering
+	\includegraphics[width=8cm]{imagenes/IMPULSE}	\caption{Respuesta al impulso.}
+\end{figure}
+Aqui se observa que existe mucha mas variaci\'on de tensi\'on en el transitorio hasta los $3 \V$, que se alcanzan en $5 \ms$.\\
+
+\begin{figure}[hbt]
+	\centering
+	\includegraphics[width=8cm]{imagenes/sen f:10.jpg}	\caption{Respuesta a una señal senoidal de $10\Hz$}	
+\end{figure}
+
+Se observa que la señal representada con color azul es la salida  y el color gris es la señal de entrada. Notar la amplificacion a $3\V$ y que la señal no sufre atenuaci\'on visible, resultado esperable para esta frecuencia.\\
+
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=8cm]{imagenes/sen f.jpg}	\caption{Respuesta a una señal senoidal de $1\kHz$}	
+\end{figure}
+
+Aqui observamos que la salida sufre una gran atenuacion luego del transitorio, tanto que se puede considerar como de amplitud nula. Aqui se ve claramente el efecto de \textit{elimina-banda}, donde el filtro se encarga de que la señal no tenga amplitud apreciable si su frecuencia es de $1\kHz$.\\
+Como ultimo comentario, la atenuaci\'on es total dado que la entrada es de tipo senoidal y estas funciones no estan compuestas por otras de distinta frecuencia,  como si es el  caso en señales triangulares o cudradas.\\
+
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=8cm]{imagenes/sen 10f}	\caption{Respuesta a una señal senoidal de $100\kHz$}	
+\end{figure}
+En esta respuesta, se ve un efecto similar a la respuesta a la senoidal de $10\Hz$, donde se ve un nivel de  amplificacion hasta los $3\V$ y la  señal no sufre atenuaci\'on visible.\\
+
+\begin{figure}[hbt]
+	\centering
+	\includegraphics[width=8cm]{imagenes/}	\caption{Respuesta a una señal senoidal de $100\Hz$}	
+\end{figure}
+
+Se observa la salida a una señal cuadrada de $100 \Hz$, notar que el circuito responde muy similar al escal\'on, esto se debe a la baja frecuencia de esta señal, que tiene un per\'iodo mucho mas bajo que el tiempo caracteristico del circuito.
+
+\begin{figure}[hbt]
+	\centering
+	\includegraphics[width=8cm]{imagenes/rtasqar1k}	\caption{Respuesta a una señal senoidal de $1\kHz$}	
+\end{figure}
+En esta salida se observa una variaci\'on en la salida cada vez mas grande a medida que el tiempo avanza, con caracteristicas de oscilaci\'on muy predominantes.\\
+
+\pagebreak
+\begin{figure}[hbt]
+	\centering
+	\includegraphics[width=8cm]{imagenes/rtasqar100k}	\caption{Respuesta a una señal senoidal de $100\kHz$}	
+\end{figure}
+Aqui se observa que la salida es menos oscilante que la anterior (sin considerar la  naturaleza oscilatoria de la señal de entada)
+y que presenta una distorsion leve en cada semiciclo.
 
 %---------------------------------------------------------------%
 
@@ -68,13 +144,6 @@ Aplicando el metodo de \textit{Nodos} se llega a la siguiente transferencia
 	
 Para elegir los componentes decid\'i fijar $C \defeq C_1 = C_2$ y  dejar $R_1$ y $R_2$ a determinar, dado que por la forma matematica de la transferencia, no es posible dejar ambos valores de resistencias iguales. Resulta entonces la siguiente transferencia, simplificada
 
-	
-%	Notando que $\omega_0 = \frac{2}{RC}$, se elig\'o  un valor de capacitor tal que la resistencias se encuente entre $1\kohm$ y $1\megohm$. Tambien se consider\'o  que al elegir un valor comercial que diste del valor teorico, va a existir un error. Considerando esto, se eligi\'o $C= 10 \nF$ y $R= 33 \kohm$, \'este valor de resistencia es el que menos error presenta del valor teorico ($R_{teo}=31.83 \kohm$).\\
-%	Hasta ahora, el circuito funciona como elimina banda para la frecuencia de $1\kHz$, pero no amplifica en $9.54 \dB$ el resto de las frecuencias. Para ello, se empleo un amplificador en configuraci\'on \textit{No inversor} a la salida del filtro. Resultando en el siguiente circuito.\\
-%insertar nuevo  circuito
-
-%Donde $R_0$ es un preset de $100 \kohm$
-%Para los valores de $R$ y $C$ elegidos, resulta la siguiente transferencia teorica
 
 \begin{equation}
   H(s) = \frac{s^2}{s^2 +s \frac{2}{C R_2}+\frac{1}{C^2 R_1 R_2}}
@@ -90,77 +159,8 @@ Dadas las ecuaciones
 Resultan $R_1=5.3 \kohm$ y $R_2=17.27\kohm$,  fijando $C=33\nF$.
 Por lo cual, se decidio que para armar el circuito, se utilizarian valores comerciales $R^C_1=4.7\kohm$ y para $R^C_2$ se utilizarian dos resistores de $10\kohm$ en serie, para minimizar el error en la frecuencia de corte y en factor de selectividad.
 
-\subsection*{Diagramas de Bode}
-Para la transferencia hallada, se realizaron los diagramas de Bode en el software \texttt{Matlab} de calculo num\'erico. Definiendo a $s$  como una variable de transferencia y con la funcio\'on \textit{bode()} se obtuvo la siguiente figura\\
-%\pagebreak
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=9cm]{imagenes/BodeTeorico}	\caption{Diagrama de Bode teorico en Matlab}
-\end{figure}
-
-Se puede apreciar el comportamiento de \textit{elimina-banda} y tambien que est\'a aplicado a la frecuencia correcta. Luego viendo el nivel de amplificacion para el resto de las frecuencias, se mide un nivel de $9.45 \dB$, lo cu\'al coincide con el esperado.
 %---------------------------------------------------------------%
-\subsection*{Respuesta del filtro teorico a distintas señales}
-Luego del diagrama de Bode, se realizaron graficos donde se muestran qu\'e salida tiene el filtro dada una señal de entrada como: \textit{escal\'on}, \textit{impulso}, \textit{senoidal}, \textit{cuadrada}.\\
-Para la respuesta a señal senoidal, se  eligieron 3 frecuencias  acordes a las caracteristicas del filtro, $f_1=  10 \Hz$, $f_2= 1\kHz$ y $f_3 = 1 \MHz$.\\
-Para la respuesta a la señal cuadrada, se eligieron tambien,  3 frecuencias acordes, $f_4 = 100 \Hz$, $f_5 = 1\kHz$, $f_6 = 100 \kHz$.
-Se lograron los siguientes resultados.\\
-
-\begin{figure}[hbt]
-	\centering
-	\includegraphics[width=9cm]{imagenes/stepTeorico}
-	\caption{Respuesta al escal\'on.}
-\end{figure}
-Se puede observar que se logra un nivel de tensi\'on estable cerca de los $6 \ms$, adem\'as, se ve que el valor al que estabiliza es $3 \V$, que es acorde a la  amplificacion de $3\ veces$ o $9.54 \dB$.\\
-
-\begin{figure}[hbt]
-	\centering
-	\includegraphics[width=8cm]{imagenes/impulseTeorico}	\caption{Respuesta al impulso.}
-\end{figure}
-Aqui se observa que existe mucha mas variaci\'on de tensi\'on en el transitorio hasta los $3 \V$, que se alcanzan en $5 \ms$.\\
-
-\begin{figure}[hbt]
-	\centering
-	\includegraphics[width=8cm]{imagenes/rtasen10}	\caption{Respuesta a una señal senoidal de $10\Hz$}	
-\end{figure}
-
-Se observa que la señal representada con color azul es la salida  y el color gris es la señal de entrada. Notar la amplificacion a $3\V$ y que la señal no sufre atenuaci\'on visible, resultado esperable para esta frecuencia.\\
-
-\begin{figure}[!h]
-	\centering
-	\includegraphics[width=8cm]{imagenes/rtasen1k}	\caption{Respuesta a una señal senoidal de $1\kHz$}	
-\end{figure}
-
-Aqui observamos que la salida sufre una gran atenuacion luego del transitorio, tanto que se puede considerar como de amplitud nula. Aqui se ve claramente el efecto de \textit{elimina-banda}, donde el filtro se encarga de que la señal no tenga amplitud apreciable si su frecuencia es de $1\kHz$.\\
-Como ultimo comentario, la atenuaci\'on es total dado que la entrada es de tipo senoidal y estas funciones no estan compuestas por otras de distinta frecuencia,  como si es el  caso en señales triangulares o cudradas.\\
-
-\begin{figure}[!h]
-	\centering
-	\includegraphics[width=8cm]{imagenes/rtasen100k}	\caption{Respuesta a una señal senoidal de $100\kHz$}	
-\end{figure}
-En esta respuesta, se ve un efecto similar a la respuesta a la senoidal de $10\Hz$, donde se ve un nivel de  amplificacion hasta los $3\V$ y la  señal no sufre atenuaci\'on visible.\\
-
-\begin{figure}[hbt]
-	\centering
-	\includegraphics[width=8cm]{imagenes/rtasqar100}	\caption{Respuesta a una señal senoidal de $100\Hz$}	
-\end{figure}
-
-Se observa la salida a una señal cuadrada de $100 \Hz$, notar que el circuito responde muy similar al escal\'on, esto se debe a la baja frecuencia de esta señal, que tiene un per\'iodo mucho mas bajo que el tiempo caracteristico del circuito.
-
-\begin{figure}[hbt]
-	\centering
-	\includegraphics[width=8cm]{imagenes/rtasqar1k}	\caption{Respuesta a una señal senoidal de $1\kHz$}	
-\end{figure}
-En esta salida se observa una variaci\'on en la salida cada vez mas grande a medida que el tiempo avanza, con caracteristicas de oscilaci\'on muy predominantes.\\
-
-\pagebreak
-\begin{figure}[hbt]
-	\centering
-	\includegraphics[width=8cm]{imagenes/rtasqar100k}	\caption{Respuesta a una señal senoidal de $100\kHz$}	
-\end{figure}
-Aqui se observa que la salida es menos oscilante que la anterior (sin considerar la  naturaleza oscilatoria de la señal de entada)
-y que presenta una distorsion leve en cada semiciclo.
-
+\subsection*{Circtuio real}
 %---------------------------------------------------------------%
 
 \subsection*{Simulaci\'on}
