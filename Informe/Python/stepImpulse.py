@@ -26,7 +26,7 @@ plt.grid(which = 'minor', color = '#bababa', linestyle = ':')
 t, A = signal.lti.impulse(s1)
 plt.figure()
 plt.plot(t*1e3,A,'-g',linewidth = 1.8) # Grafica bode demodulo
-plt.title('Respuesta al impulso')
+plt.title('Respuesta al escalon')
 plt.xlabel('Tiempo [ms]')
 plt.ylabel('Amplitud [V]')
 plt.legend(loc='upper left', fontsize = 'large')

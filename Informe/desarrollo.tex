@@ -74,6 +74,7 @@ Se puede observar que se logra un nivel de tensi\'on estable cerca de los $2 \ms
 	\includegraphics[width=10cm]{imagenes/Impulse}	\caption{Respuesta al impulso.}
 \end{figure}
 Aqui se observa que existe mucha mas variaci\'on de tensi\'on en el transitorio hasta los $0\V$, que se alcanzan en $2 \ms$. Debido a que solo se observa el comportamiento del impuslo desde el $0^+$, este tiene pendiente negativa y por ello el filtro tiene una salida con tensi\'on negativa. \\
+Adem\'as, la señal deun impulso se puede considerar como la derivada del escal\'on, resulta entonces razonable con este tipo de sistema (Lineal y temporalmente invariante) que la salida sea la derivada del resultado anterior.
 
 \begin{figure}[H]
 	\centering
@@ -253,13 +254,51 @@ Aqui las diferencias entre el filtro real y el ideal son mas aparentes, esta dif
 	Para verificar que el funcionamiento del circuito sea cerca del esperado, se utiliz\'o el software de simulaci\'on \textit{LTSpice} con los componentes de valores comerciales. 
 \begin{figure}[hbt]
 	\centering
-	%\includegraphics[width=10cm]{imagenes/simulacion}
-	\caption{Circuito simulado}
+	\includegraphics[width=10cm]{imagenes/BodeSimulacion}
+	\caption{Diagrama \textit{Bode} del circuito simulado}
 \end{figure}
 
 	
 Se utiliz\'o la directiva \texttt{.ac dec 100 1 1000000 } para
-variar la  frecuencia de la fuente de entrada \texttt{ Vin } desde  $1 \si{\hertz}$ hasta $100 \kHz$. Luego se import\'o la biblioteca \textit{TL081} para el operacional. Produciendo el siguiente resultado.
+variar la  frecuencia de la fuente de entrada \texttt{ Vin } desde  $1 \si{\hertz}$ hasta $100 \kHz$. Luego se import\'o la biblioteca \textit{TL081} para el operacional. Produciendo este diagrama que resulta ser coherente con lo estudiado analiticamente.
+Luego, seguir\'an pruebas de respuesta en funci\'on de varias de las mismas señales que ya se estudiaron.
+
+\begin{figure}[h]
+\begin{centering}
+
+	\begin{minipage}[b]{.4\linewidth}
+	\centering
+	\includegraphics[width=1.3\linewidth]{imagenes/StepSimulacion}
+	\caption{Respuesta al escal\'on del circuito simulado}
+	\end{minipage}
+	\hfill
+	\begin{minipage}[b]{.4\linewidth}
+	\centering
+	\includegraphics[width=1.3\linewidth]{imagenes/ImpulseSimulacion}
+	\caption{Respuesta al impulso del circuito simulado}
+	\end{minipage}
+\end{centering}
+\end{figure}
+
+
+Estas respuestas se corresponden con los resultados hallados anteriormente, encontrando diferencias en los niveles de tensi\'on. Siendo la curva azul, la  que representa la entrada y la curva verde la que representa la salida.
+
+\begin{figure}[h]
+\begin{centering}
+
+	\begin{minipage}[b]{.4\linewidth}
+	\centering
+	\includegraphics[width=1.3\linewidth]{imagenes/Sim}
+	\caption{Respuesta al escal\'on del circuito simulado}
+	\end{minipage}
+	\hfill
+	\begin{minipage}[b]{.4\linewidth}
+	\centering
+	\includegraphics[width=1.3\linewidth]{imagenes/ImpulseSimulacion}
+	\caption{Respuesta al impulso del circuito simulado}
+	\end{minipage}
+\end{centering}
+\end{figure}
 
 
 %---------------------------------------------------------------%
