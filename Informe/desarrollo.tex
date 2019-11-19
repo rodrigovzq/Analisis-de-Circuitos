@@ -67,13 +67,13 @@ Se lograron los siguientes resultados.\\
 	\includegraphics[width=10cm]{imagenes/Step}
 	\caption{Respuesta al escal\'on.}
 \end{figure}
-Se puede observar que se logra un nivel de tensi\'on estable cerca de los $2 \ms$. Es esperable que se vea reflejado en un nivel de $1\V$ al comienzo del escal\'on si consideramos al ascenso a $1\V$  c\'omo una señal que contiene a todas las frecuencias. Adem\'as, se ve que el valor al que estabiliza es $0 \V$, que es acorde al comportamiento del filtro si se interpreta a la tensi\'on continua como una señal de frecuencia nula.\\
+Se puede observar que se logra un nivel de tensi\'on estable cerca de los $2 \ms$. Es esperable que se vea reflejado en un nivel de $1\V$ al comienzo del escal\'on si consideramos al ascenso a $1\V$  como una señal que contiene a todas las frecuencias. Adem\'as, se ve que el valor al que estabiliza es $0 \V$, que es acorde al comportamiento del filtro si se interpreta a la tensi\'on continua como una señal de frecuencia nula.\\
 
 \begin{figure}[hbt]
 	\centering
 	\includegraphics[width=10cm]{imagenes/Impulse}	\caption{Respuesta al impulso.}
 \end{figure}
-Aqui se observa que existe mucha mas variaci\'on de tensi\'on en el transitorio hasta los $0\V$, que se alcanzan en $2 \ms$. Debido a que solo se observa el comportamiento del impuslo desde el $0^+$, este tiene pendiente negativa y por ello el filtro tiene una salida con tensi\'on negativa. \\
+Aqu\'i se observa que existe mucha m\'as variaci\'on de tensi\'on en el transitorio hasta los $0\V$, que se alcanzan en $2 \ms$. Debido a que solo se observa el comportamiento del impuslo desde el $0^+$, este tiene pendiente negativa y por ello el filtro tiene una salida con tensi\'on negativa. \\
 Adem\'as, la señal deun impulso se puede considerar como la derivada del escal\'on, resulta entonces razonable con este tipo de sistema (Lineal y temporalmente invariante) que la salida sea la derivada del resultado anterior.
 
 \begin{figure}[H]
@@ -251,7 +251,16 @@ Aqui las diferencias entre el filtro real y el ideal son mas aparentes, esta dif
 %---------------------------------------------------------------%
 
 \subsection*{Simulaci\'on}
-	Para verificar que el funcionamiento del circuito sea cerca del esperado, se utiliz\'o el software de simulaci\'on \textit{LTSpice} con los componentes de valores comerciales. 
+	Para verificar que el funcionamiento del circuito sea cerca del esperado, se utiliz\'o el software de simulaci\'on \textit{LTSpice} con los componentes de valores comerciales. Se utiliz\'o el siguiente circuito.\\
+	
+		
+\begin{figure}[hbt]
+	\centering
+	\includegraphics[width=10cm]{imagenes/Simulacion}
+	\caption{Diagrama \textit{Bode} del circuito simulado}
+\end{figure}
+	
+\pagebreak	
 \begin{figure}[hbt]
 	\centering
 	\includegraphics[width=10cm]{imagenes/BodeSimulacion}
@@ -263,18 +272,18 @@ Se utiliz\'o la directiva \texttt{.ac dec 100 1 1000000 } para
 variar la  frecuencia de la fuente de entrada \texttt{ Vin } desde  $1 \si{\hertz}$ hasta $100 \kHz$. Luego se import\'o la biblioteca \textit{TL081} para el operacional. Produciendo este diagrama que resulta ser coherente con lo estudiado analiticamente.
 Luego, seguir\'an pruebas de respuesta en funci\'on de varias de las mismas señales que ya se estudiaron.
 
-\begin{figure}[h]
+\begin{figure}[hbt]
 \begin{centering}
 
 	\begin{minipage}[b]{.4\linewidth}
 	\centering
-	\includegraphics[width=1.3\linewidth]{imagenes/StepSimulacion}
+	\includegraphics[width=1.1\linewidth]{imagenes/StepSimulacion}
 	\caption{Respuesta al escal\'on del circuito simulado}
 	\end{minipage}
 	\hfill
 	\begin{minipage}[b]{.4\linewidth}
 	\centering
-	\includegraphics[width=1.3\linewidth]{imagenes/ImpulseSimulacion}
+	\includegraphics[width=1.1\linewidth]{imagenes/ImpulseSimulacion}
 	\caption{Respuesta al impulso del circuito simulado}
 	\end{minipage}
 \end{centering}
@@ -283,22 +292,33 @@ Luego, seguir\'an pruebas de respuesta en funci\'on de varias de las mismas señ
 
 Estas respuestas se corresponden con los resultados hallados anteriormente, encontrando diferencias en los niveles de tensi\'on. Siendo la curva azul, la  que representa la entrada y la curva verde la que representa la salida.
 
-\begin{figure}[h]
+\begin{figure}[H]
 \begin{centering}
 
 	\begin{minipage}[b]{.4\linewidth}
 	\centering
-	\includegraphics[width=1.3\linewidth]{imagenes/Sim}
-	\caption{Respuesta al escal\'on del circuito simulado}
+	\includegraphics[width=1.1\linewidth]{imagenes/SimCuadrada_f:10}
+	\caption{Respuesta a señal cuadrada de $f=\frac{f_0}{10}$ del circuito simulado}
 	\end{minipage}
 	\hfill
 	\begin{minipage}[b]{.4\linewidth}
 	\centering
-	\includegraphics[width=1.3\linewidth]{imagenes/ImpulseSimulacion}
-	\caption{Respuesta al impulso del circuito simulado}
+	\includegraphics[width=1.1\linewidth]{imagenes/SimCuadrada_f}
+	\caption{Respuesta a señal cuadrada de $f=f_0$ del circuito simulado}
 	\end{minipage}
 \end{centering}
+\pagebreak
 \end{figure}
+\begin{centering}
+\begin{figure}[H]
+	\centering	
+	\includegraphics[width=0.4\textwidth]{imagenes/SimCuadrada_10f}	\caption{Respuesta a señal cuadrada de $f=10.f_0$ del circuito simulado}
+\end{figure}
+\end{centering}
+Las respuestas a las señales cuadradas continuan comportandose similar al estudio anal\'itico, aunque existen diferencias en los niveles de tensi\'on que toman las señales.
+
+
+
 
 
 %---------------------------------------------------------------%
