@@ -27,12 +27,29 @@ Por ultimo, $H_0 =1$  ya que no hay amplificacion superada la frecuencia de cort
 %---------------------------------------------------------------%
 
 \subsection*{Diagramas de Bode}
-Para la transferencia hallada, se realizaron los diagramas de Bode en el software \texttt{Matlab} de calculo num\'erico. Definiendo a $s$  como una variable de transferencia y con la funcio\'on \textit{bode()} se obtuvo la siguiente figura\\
+Para la transferencia hallada, se realizaron los diagramas de Bode en \texttt{Python} utilizando el m\'odulo \textit{Signal} para procesamiento de señales. Definiendo la transferencia y con la funcio\'on \textit{bode()} se obtuvieron los siguientes gr\'aficos\\
 %\pagebreak
 \begin{figure}[h]
+\begin{center}
+
+\subfloat[Diagrama de Bode de modulo teorico en Python]{
+	\begin{minipage}[c]{1\textwidth}
+		\centering
+		\includegraphics[width=15cm]{imagenes/BodeMod}		%\caption{Diagrama de Bode de modulo teorico en Python}
+	\end{minipage}
+}
+\hfill
+\subfloat[Diagrama de Bode de fase en Pyton]{
+\begin{minipage}[c]{1\textwidth}
 	\centering
-	\includegraphics[width=18cm]{imagenes/BODE.jpg}	\caption{Diagrama de Bode teorico en Matlab}
+	\includegraphics[width=15cm]{imagenes/BodeFase}	%\caption{Diagrama de Bode de fase en Pyton}
+\end{minipage}
+}
+
+\end{center}
 \end{figure}
+
+
 
 Se puede apreciar el comportamiento de \textit{Pasa Altos} y tambien que est\'a aplicado a la frecuencia correcta ($\sim 500\Hz$). Luego viendo el nivel de amplificacion para las altas frecuencias, se observa un nivel de $0 \dB$, lo cu\'al coincide con el esperado.
 
@@ -44,67 +61,47 @@ Luego del diagrama de Bode, se realizaron graficos donde se muestran qu\'e salid
 Para la respuesta a la señal cuadrada, se eligieron tambien,  3 frecuencias acordes, $f_1 = \frac{f_0}{10}=50,4 \Hz$, $f_2 = f_0 = 504\Hz$, $f_3 = 10.f_0= 5,04 \kHz$.
 Se lograron los siguientes resultados.\\
 
-%TODO: LLEGUE HASTA ACA, FALTA PONER GRAFICOS NUEVOS MAS LEGIBLES Y CONTINUAR DESCRIPCIONES%
 
 \begin{figure}[hbt]
 	\centering
-	\includegraphics[width=9cm]{imagenes/STEP.jpg}
+	\includegraphics[width=10cm]{imagenes/Step}
 	\caption{Respuesta al escal\'on.}
 \end{figure}
-Se puede observar que se logra un nivel de tensi\'on estable cerca de los $6 \ms$, adem\'as, se ve que el valor al que estabiliza es $3 \V$, que es acorde a la  amplificacion de $3\ veces$ o $9.54 \dB$.\\
+Se puede observar que se logra un nivel de tensi\'on estable cerca de los $2 \ms$. Es esperable que se vea reflejado en un nivel de $1\V$ al comienzo del escal\'on si consideramos al ascenso a $1\V$  c\'omo una señal que contiene a todas las frecuencias. Adem\'as, se ve que el valor al que estabiliza es $0 \V$, que es acorde al comportamiento del filtro si se interpreta a la tensi\'on continua como una señal de frecuencia nula.\\
 
 \begin{figure}[hbt]
 	\centering
-	\includegraphics[width=8cm]{imagenes/IMPULSE}	\caption{Respuesta al impulso.}
+	\includegraphics[width=10cm]{imagenes/Impulse}	\caption{Respuesta al impulso.}
 \end{figure}
-Aqui se observa que existe mucha mas variaci\'on de tensi\'on en el transitorio hasta los $3 \V$, que se alcanzan en $5 \ms$.\\
+Aqui se observa que existe mucha mas variaci\'on de tensi\'on en el transitorio hasta los $0\V$, que se alcanzan en $2 \ms$. Debido a que solo se observa el comportamiento del impuslo desde el $0^+$, este tiene pendiente negativa y por ello el filtro tiene una salida con tensi\'on negativa. \\
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=8.3cm]{imagenes/Cuadrada_f:10}	\caption{Respuesta a una señal cuadrada de $50.4\Hz$}	
+\end{figure}
+
+Se observa que la señal representada con color verde es la salida  del filtro y de color azul es la señal de entrada. Notar que la salida en general resulta muy atenuada respecto de la entrada,  lo cu\'al es esperado, dada la baja frecuencia de la misma. Asimismo, en los flancos de la cuadrada, se observan grandes oscilaciones en la salida, lo cu\'al es coherente considerando a esos flancos como pequeñas porciones de una señal alta frecuencia.\\
 
 \begin{figure}[hbt]
 	\centering
-	\includegraphics[width=8cm]{imagenes/sen f:10.jpg}	\caption{Respuesta a una señal senoidal de $10\Hz$}	
+	\includegraphics[width=8.3cm]{imagenes/Cuadrada_f}	\caption{Respuesta a una señal cuadrada de $504\Hz$}	
 \end{figure}
 
-Se observa que la señal representada con color azul es la salida  y el color gris es la señal de entrada. Notar la amplificacion a $3\V$ y que la señal no sufre atenuaci\'on visible, resultado esperable para esta frecuencia.\\
-
-\begin{figure}[!h]
-	\centering
-	\includegraphics[width=8cm]{imagenes/sen f.jpg}	\caption{Respuesta a una señal senoidal de $1\kHz$}	
-\end{figure}
-
-Aqui observamos que la salida sufre una gran atenuacion luego del transitorio, tanto que se puede considerar como de amplitud nula. Aqui se ve claramente el efecto de \textit{elimina-banda}, donde el filtro se encarga de que la señal no tenga amplitud apreciable si su frecuencia es de $1\kHz$.\\
-Como ultimo comentario, la atenuaci\'on es total dado que la entrada es de tipo senoidal y estas funciones no estan compuestas por otras de distinta frecuencia,  como si es el  caso en señales triangulares o cudradas.\\
-
-\begin{figure}[!h]
-	\centering
-	\includegraphics[width=8cm]{imagenes/sen 10f}	\caption{Respuesta a una señal senoidal de $100\kHz$}	
-\end{figure}
-En esta respuesta, se ve un efecto similar a la respuesta a la senoidal de $10\Hz$, donde se ve un nivel de  amplificacion hasta los $3\V$ y la  señal no sufre atenuaci\'on visible.\\
+Aqui se observa que los transitorios de la salida terminan en a tiempo a que se le aplique una tensi\'on identica pero inversa. Se lo puede considerar como un \textit{tren de escalones}. Adem\'as, 
+se observa que los picos en los flancos son menores a la salida anterior.\\
 
 \begin{figure}[hbt]
 	\centering
-	\includegraphics[width=8cm]{imagenes/}	\caption{Respuesta a una señal senoidal de $100\Hz$}	
+	\includegraphics[width=8.3cm]{imagenes/Cuadrada_10f}	\caption{Respuesta a una señal cuadrada de $5.04\kHz$}	
 \end{figure}
-
-Se observa la salida a una señal cuadrada de $100 \Hz$, notar que el circuito responde muy similar al escal\'on, esto se debe a la baja frecuencia de esta señal, que tiene un per\'iodo mucho mas bajo que el tiempo caracteristico del circuito.
-
-\begin{figure}[hbt]
-	\centering
-	\includegraphics[width=8cm]{imagenes/rtasqar1k}	\caption{Respuesta a una señal senoidal de $1\kHz$}	
-\end{figure}
-En esta salida se observa una variaci\'on en la salida cada vez mas grande a medida que el tiempo avanza, con caracteristicas de oscilaci\'on muy predominantes.\\
+En esta respuesta, vemos una continuaci\'on de la tendencia a perder atenuaci\'on con el aumento de la frecuencia y asimismo que los picos en los flancos sean cada vez mas bajos, a tal punto que en esta señal son practicamente inexistentes\\
 
 \pagebreak
-\begin{figure}[hbt]
-	\centering
-	\includegraphics[width=8cm]{imagenes/rtasqar100k}	\caption{Respuesta a una señal senoidal de $100\kHz$}	
-\end{figure}
-Aqui se observa que la salida es menos oscilante que la anterior (sin considerar la  naturaleza oscilatoria de la señal de entada)
-y que presenta una distorsion leve en cada semiciclo.
 
 %---------------------------------------------------------------%
 
 \subsection*{Circuito}
-Se utiliz\'o el siguiente circuito:
+Se propone el siguiente circuito, en base a filtros encntrados en la carpeta y libros:
 
 \begin{figure}[H]
 \begin{center}
@@ -142,7 +139,8 @@ Aplicando el metodo de \textit{Nodos} se llega a la siguiente transferencia
   H(s) = \frac{s^2}{s^2 +s \frac{(C_1 R_1 + C_2 R_1)}{C_1 C_2 R_1 R_2}+\frac{1}{C_1 C_2 R_1 R_2}}
 \end{equation}
 	
-Para elegir los componentes decid\'i fijar $C \defeq C_1 = C_2$ y  dejar $R_1$ y $R_2$ a determinar, dado que por la forma matematica de la transferencia, no es posible dejar ambos valores de resistencias iguales. Resulta entonces la siguiente transferencia, simplificada
+Para elegir los componentes decid\'i fijar $C \defeq C_1 = C_2$ y  dejar $R_1$ y $R_2$ a determinar, dado que por la forma matematica de la transferencia, no es posible dejar ambos valores de resistencias iguales. \\
+Resulta entonces la siguiente transferencia, simplificada
 
 
 \begin{equation}
@@ -158,25 +156,110 @@ Dadas las ecuaciones
 \end{equation}
 Resultan $R_1=5.3 \kohm$ y $R_2=17.27\kohm$,  fijando $C=33\nF$.
 Por lo cual, se decidio que para armar el circuito, se utilizarian valores comerciales $R^C_1=4.7\kohm$ y para $R^C_2$ se utilizarian dos resistores de $10\kohm$ en serie, para minimizar el error en la frecuencia de corte y en factor de selectividad.
+\pagebreak
+
 
 %---------------------------------------------------------------%
 \subsection*{Circtuio real}
+El circuito con los componentes comerciales resulta el siguiente
+
+\begin{figure}[hbt]
+\begin{center}
+\begin{circuitikz} [american,scale=0.6,transform shape]
+\draw
+%capacitores y entrada
+(0,0) node[left] {$v_i$} to [short,o-] (1,0)
+	to[C,l=$ 33\nF $] (4,0) -- (5,0)
+	to[C,l=$ 33\nF$] (7,0)-- (8,0)
+;
+\draw
+%opamp
+(9,0.49) node[op amp] (opamp) {}
+(opamp) node[] {TL084}
+(opamp.-) to [short,-o] (7.8,3) -- (10.2,3) to [short,-o]
+(opamp.out) to [short,-o] (11,0.49) node[right] {$v_o$}
+;
+\draw
+%R1
+(4.5,0) to [short,o-] (4.5,3)
+	to[R,l=$4.7\kohm$] (7.75,3)
+;
+\draw
+%R2
+(7.5,0) to  [short,o-] (7.5,-1)
+	to[R,l=$10\kohm$] (7.5,-3) -- (7.5,-3.5)
+	to[R,l=$10\kohm$] (7.5,-5)-- (7.5,-6)
+	 node[ground]{}; 
+;
+\end{circuitikz}
+\end{center}
+\caption{Circuito de filtro Pasa Alto}
+\end{figure}	
+
+Para este circuito, la transferencia resulta
+
+\begin{equation}
+	H_R(s)\frac{s^2}{s^2+s \frac{100000}{33}+9768868}
+\end{equation}
+
+Con la transferencia determinada, se presentan las diferencias entre los parametros caracteristicos del filtro
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|c|c|c|}
+\multicolumn{4}{c}{\textbf{}}\\
+\hline
+\multicolumn{4}{|c|}{Resultados}\\
+\cline{1-4}
+Par\'ametro & Ideal & Real &  Error   \\
+\hline
+$\omega_o$ & 3169 & 3126 &$1.35\%$\\
+\hline
+$f_0$ & $504\Hz$ & $497\Hz$ & $1.30\%$ \\
+\hline
+$Q$ & 0.9 & 1.03 & $14.6\%$ \\
+\hline
+
+\end{tabular}
+\caption{Comparativa entre par\'ametros del circuito ideal y el circuito real}
+\label{tabla-datos}
+\end{table}
+
+Luego, la forma de la transferencia real produce los siguientes diagramas de Bode
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=8.3cm]{imagenes/BodeReal}	\caption{Bode de m\'odulo del circuito real, comparado con el ideal}	
+\end{figure}
+\pagebreak
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=8.3cm]{imagenes/FaseReal}	\caption{Bode de fase del circuito real,comparado con el ideal}	
+\end{figure}
+
+De las figuras del \textit{Bode} no se aprecian diferencias significativas. A difenrencia de la respuesta al escal\'on que veremos a continuaci\'on.
+
+\begin{figure}[hbt]
+	\centering
+	\includegraphics[width=8.3cm]{imagenes/StepReal}
+	\caption{Respuesta al escal\'on del circuito real, comparado con el circuito ideal}	
+\end{figure}
+Aqui las diferencias entre el filtro real y el ideal son mas aparentes, esta diferencia en la forma se corresponde con el aumento en el factor de selectividad $Q$, m\'as que en la diferencia en la frecuencia de corte. Estos es, el fin del transitorio es pr\'acticamente el mismo instante, mientras que los extremos de las curvas mas pronunciados son caracteristicos alaumentar $Q$.
+ 
+
 %---------------------------------------------------------------%
 
 \subsection*{Simulaci\'on}
-	Para verificar que el funcionamiento del circuito sea el esperado, se utiliz\'o el software de simulaci\'on \textit{LTSpice} con los componentes de valores comerciales. 
+	Para verificar que el funcionamiento del circuito sea cerca del esperado, se utiliz\'o el software de simulaci\'on \textit{LTSpice} con los componentes de valores comerciales. 
 \begin{figure}[hbt]
 	\centering
-	\includegraphics[width=10cm]{imagenes/simulacion}
-	\caption{Circtuito simulado}
+	%\includegraphics[width=10cm]{imagenes/simulacion}
+	\caption{Circuito simulado}
 \end{figure}
 
 	
 Se utiliz\'o la directiva \texttt{.ac dec 100 1 1000000 } para
 variar la  frecuencia de la fuente de entrada \texttt{ Vin } desde  $1 \si{\hertz}$ hasta $100 \kHz$. Luego se import\'o la biblioteca \textit{TL081} para el operacional. Produciendo el siguiente resultado.
 
-%---------------------------------------------------------------%
-
-\subsection*{Respuesta de la simulaci\'on a distintas señales}
 
 %---------------------------------------------------------------%
