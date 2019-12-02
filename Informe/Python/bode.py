@@ -16,7 +16,7 @@ w = w / 2 / np.pi
 
 plt.semilogx(w,amplitud,'-b',linewidth = 1.8) # Grafica bode demodulo
 plt.title('Bode de modulo')
-plt.xlabel('Frecuencia')
+plt.xlabel('Frecuencia [Hz] ')
 plt.ylabel('Amplitud [dB]')
 plt.legend(loc='upper left', fontsize = 'large')
 plt.grid(which = 'major', color = 'gray', linestyle = '--')
@@ -27,7 +27,7 @@ plt.grid(which = 'minor', color = '#bababa', linestyle = ':')
 plt.figure()
 plt.semilogx(w,fase,'-r',linewidth = 1.8) #Grafica bode de fase
 plt.title('Bode de fase')
-plt.xlabel('Frecuencia')
+plt.xlabel('Frecuencia [Hz]')
 plt.ylabel('Fase [grados]')
 plt.legend(loc='upper left', fontsize = 'large')
 plt.grid(which = 'major', color = 'gray', linestyle = '--')

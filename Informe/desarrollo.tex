@@ -11,7 +11,7 @@ El filtro a diseñar vino dado por la siguiente ecuaci\'on de transferencia. \\
 
 
 Esta transferencia es la n\'umero 4, de la lista provista en clase.
-Por la forma de la ecuaci\'on, se observa que se trata de un filtro del tipo \textit{Pasa Altos}. Esto es, haciendo limite con $s \rightarrow +\infty$, resulta una amplifiacion de 0\dB \ y se tiene un atenuaci\'on infinita para $s\rightarrow-\infty$.
+Por la forma de la ecuaci\'on, se observa que se trata de un filtro del tipo \textit{Pasa Altos}. Esto es, haciendo limite con $s \rightarrow +\infty$, resulta una amplifiacion de 0\dB \ y se tiene un atenuaci\'on infinita para $s\rightarrow 0$.
 
 \subsection*{Diseño del filtro}
 Se identificaron los par\'ametros de la transferencia del filtro a partir de la forma de Bode vista en clase.\\
@@ -39,10 +39,10 @@ Para la transferencia hallada, se realizaron los diagramas de Bode en \texttt{Py
 	\end{minipage}
 }
 \hfill
-\subfloat[Diagrama de Bode de fase en Pyton]{
+\subfloat[Diagrama de Bode de fase en Python]{
 \begin{minipage}[c]{1\textwidth}
 	\centering
-	\includegraphics[width=15cm]{imagenes/BodeFase}	%\caption{Diagrama de Bode de fase en Pyton}
+	\includegraphics[width=15cm]{imagenes/BodeFase}	%\caption{Diagrama de Bode de fase en Python}
 \end{minipage}
 }
 
@@ -317,8 +317,8 @@ Estas respuestas se corresponden con los resultados hallados anteriormente, enco
 \end{centering}
 Las respuestas a las señales cuadradas continuan comportandose similar al estudio anal\'itico, aunque existen diferencias en los niveles de tensi\'on que toman las señales.
 
-
-
+%---------------------------------------------------------------%
+\subsection*{Mediciones}
 
 
 %---------------------------------------------------------------%
