@@ -1,0 +1,13 @@
+* /Users/rodrigovazquez/Library/Mobile Documents/3L68KQB4HG~com~readdle~CommonDocuments/Documents/ADC/TP2019/Simulacion/PasaAlto.asc
+C1 N001 N002 33n
+C2 N003 N001 33n
+R2 N003 0 20k
+R1 Vout N001 4.7k
+XU2 N003 Vout V+ V- Vout TL081
+V2 V+ 0 5
+V3 0 V- 5
+V1 N002 0 1 AC 1
+.inc "/Users/rodrigovazquez/Library/Mobile Documents/3L68KQB4HG~com~readdle~CommonDocuments/Documents/ADC/TP/Simulacion/TL081.301"
+.ac dec 100 50 4000
+.backanno
+.end
