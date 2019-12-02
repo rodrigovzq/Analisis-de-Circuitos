@@ -320,5 +320,91 @@ Las respuestas a las señales cuadradas continuan comportandose similar al estud
 %---------------------------------------------------------------%
 \subsection*{Mediciones}
 
+Se realizazron mediciones sobre el filtro utilizando una fuentes de alimentaci\'on externa, generador de funciones y un osciloscopio. Las primeras mediciones realizadas constaron de visualizar en un osciloscopio los distintos niveles de amplificaci\'on dada una frecuencia de una señal senoidal, se realiz\'o una tabla con frecuencias desde $\frac{f_0}{10}=50.4\Hz$ hasta $10 f_0=5040\Hz$ en pasos de un tercio de octava, con la excepci\'on de los valores cercanos a la frecuencia de corte. All\'i se tomaron 10 puntos entre el tercio de octava anterior y el siguiente a la frecuencia de corte. Esto se realizo para tener un gr\'afico con mayor visibilidad del efecto del factor de selectividad $Q$ alrededor de la frecuencia de corte.\\
+El banco de medici\'on para esta y las siguientes mediciones, fue el que se presenta en la siguiente imagen.
 
+\begin{centering}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=7cm]{imagenes/BancoMedicion.JPG}	\caption{Banco de mediciones}	
+\end{figure}
+\end{centering}
+
+\pagebreak
+
+Luego de realizar las mediciones, se calcularon los valores de amplificacion en \dB\ y se confeccion\'o el siguiente diagrama
+
+\begin{centering}
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.8\textwidth]{imagenes/bodeMedicion}
+		\caption{Diagrama de Bode para la medici\'on}
+	\end{figure}
+\end{centering}
+
+Podemos apreciar que la curva formada por los puntos medidos se asimila mucho a la curva dada por la transferencia del circuito real, y es coherente que esta sea la que predice el funcionamiento del circuito dado que ese es su prop\'oito.\\
+Haciendo un acercamiento sobre la zona de corte, podemos observar que hay m\'as cantidad de puntos y en esta zona, la similitud con la curva del circuito real es pr\'acticamente completa.
+
+\begin{centering}
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.8\textwidth]{imagenes/bodeMedicionDetalle.png}
+		\caption{Vista en detalle de Bode para la medici\'on}
+	\end{figure}
+\end{centering}
+
+\pagebreak
+
+Luego, se defini\'o un procedimiento para medir la frecuencia de corte a $-3\dB$, y dado que lo observado en el osciloscopio son valores de tensi\'on, se encontr\'o el valor de tensi\'n a la salida del filtro tal que haya una amplificaci\'on de $-3\dB$, dada una tens\'on (amplitud) de entrada fija.
+Siendo que la amplitud de entrada eran $3.1\V$, se busca que la amplitud a la salida sea de 
+\begin{equation}
+	V_0= 3,1 \V \ 10^{\frac{-3 \dB}{20}}	= 2.19\V
+\end{equation}
+Este nivel  de amplitud se encuentra en $f=390\Hz$, esto implica  una diferencia porcentual de $23\%$ con la frecuencia de corte.
+
+Para el c\'alculo de las asintotas se tomaron los puntos antes y despu\'es de la frecuencia de corte donde existita una tendencia lineal, dado que la escala era semilogar\'itmica para el eje de las frecuencias, la relaci\'on lineal es de $log (f) \ vs\ A$ donde A es la amplificai\'on en \dB. Utilizando el metodo de \textit{Cuadrados m\'inimos} para la aproximaci\'on lineal, se encontraron las rectas $y_1=39.46x-105.48$ e $y_2=-0.24x+1.81$. Vemos a continuaci\'on el resultado de la regreci\'on lineal en el gr\'afico de Bode.
+
+\begin{centering}
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.6\textwidth]{imagenes/BodeMedicionAjuste.png}
+		\caption{Ajuste lineal de Bode para la medici\'on}
+	\end{figure}
+\end{centering}
+
+Viendo que las pendientes de las rectas dieron $a_1=39.46$ y $a_2=-0.24$, estos resultados son bastantes similares los valores esperados del desarrollo anal\'itico, esperandose valores de $40\dB$ y $0\dB$, los resultados encontrados supone una diferencia porcentual de $1.35\%$ para la primer pendiente, mientras que la diferencia de la segunda es atribuida al haber tomado puntos de la medici\'on donde todavia existia algun nivel de amplifiaci\'on.
+Teniendo estos datos, se puede definir una frecuencia en la intersecci\'on de las rectas $y_1$ e $y_2$, esta di\'o un valor de $f=504,1 \Hz$, lo cu\'al implica un muy bajo error del $0.02\%$ 
+\subsubsection*{Respuesta a excitaci\'on cuadrada}
+
+Se realizaron 3 mediciones de respuesta a una señal cuadrada con las mismas especificaciones de la señal simulada anteriormente. Podremos observar en las siguientes imagenes, que los comportamientos generales son muy similares a los esperados, con las unicas diferencias siendo de caracteristicas propias de un circuito real, como el hecho de imposibilitar ganancia infinita por ejemplo.
+
+\begin{centering}
+	\begin{figure}[hbt]
+		\centering
+		\includegraphics[width=0.4\textwidth]{imagenes/Captura50.jpg}
+		\caption{Medici\'on en osciloscpio con una entrada cuadrada de 50.4 Hz}
+	\end{figure}
+\end{centering}
+
+Se puede observar que la forma de la salida es muy similar a lo simulado, con la diferencia que los picos iniciales en cada flanco son mucho menores, pasando de tocar los $2\V$ a estar por debajo de los $1.5\V$. Las oscilaciones y otras caracteristicas se mantienen iguales a lo simulado.
+
+\begin{centering}
+	\begin{figure}[hbt]
+		\centering
+		\includegraphics[width=0.4\textwidth]{imagenes/Captura500.jpg}
+		\caption{Medici\'on en osciloscpio con una entrada cuadrada de 504 Hz}
+	\end{figure}
+\end{centering}
+
+Nuevamente podemos observar que la forma  general se condice con lo visto en las simulaci\'ones y la diferencia vuelve a recaer en laamplitud del pico inicial de la salida, ahora teniendo un nivel maximo igual a la tension de entradade $1\V$, donde previamente en la simulaci\'on se vieron picos que superaban los $2.5 \V$
+
+\begin{centering}
+	\begin{figure}[hbt]
+		\centering
+		\includegraphics[width=0.4\textwidth]{imagenes/Captura5000.jpg}
+		\caption{Medici\'on en osciloscpio con una entrada cuadrada de 5040 Hz}
+	\end{figure}
+\end{centering}
+
+Por \'ultimo en la salida 
 %---------------------------------------------------------------%

@@ -1,9 +1,8 @@
 import numpy as np
 import csv
-from scipy import signal
 from matplotlib import pyplot as plt
 import math
-from scipy.special import exp10
+#from scipy.special import exp10
 
 ## CUADRADOS MINIMOS
 ##Toma dos arreglos con los puntos de X y de Y respectivamente
@@ -15,7 +14,8 @@ def LR(x,y):
   return (A,B)
 
 # Importo datos de medicion
-medicion = open("/Users/rodrigovazquez/Library/Mobile Documents/3L68KQB4HG~com~readdle~CommonDocuments/Documents/ADC/TP2019/datos/medicionPasaAltos.csv","r")
+#medicion = open("/Users/rodrigovazquez/Library/Mobile Documents/3L68KQB4HG~com~readdle~CommonDocuments/Documents/ADC/TP2019/datos/medicionPasaAltos.csv","r")
+medicion = open("../datos/medicionPasaAltos.csv","r")
 datos = np.loadtxt(medicion,delimiter=',')
 f = datos[:,0]
 A = datos[:,1]
@@ -27,11 +27,17 @@ x2 = np.linspace(np.log10(f[16]),np.log10(f[29]),2*len(f[21:29]))
 y1 = A1*x1+B1
 y2 = A2*x2+B2
 
+
+
 print("Pendiente asintota 1:"'\t')
 print(A1)
 print('\t')
+print(B1)
+print('\t')
 print("Pendiente asintota 2:"'\t')
 print(A2)
+print('\t')
+print(B2)
 
 
 
@@ -39,7 +45,7 @@ print(A2)
 plt.semilogx(f[1:20],A[1:20],'.g',label = 'Curva medida') # Grafica bode de modulo
 plt.semilogx(exp10(x1),y1,'-g',linewidth = 1.8,label = 'Ajuste')
 plt.semilogx(f[21:29],A[21:29],'.r',linewidth = 1.8,label = 'Curva medida') # Grafica bode de modulo
-plt.semilogx(exp10(x2),y2,'-r',linewidth = 1.8,label = 'Ajuste')
+#plt.semilogx(exp10(x2),y2,'-r',linewidth = 1.8,label = 'Ajuste')
 plt.title('Bode de modulo')
 plt.xlabel('Frecuencia [Hz]')
 plt.ylabel('Amplitud [dB]')
